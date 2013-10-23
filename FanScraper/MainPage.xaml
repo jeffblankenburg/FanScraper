@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="FanScraper.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FanScraper"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Canvas Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="355" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="230"/>
+
+        <Button Content="Get NFL Game List" FontSize="15" HorizontalAlignment="Center" Click="GetNFLGameList_Click" Margin="37,243,1159,488" Background="Black" Height="37" Width="170"/>
+        <Button Content="Get NFL Game Stats" FontSize="15" HorizontalAlignment="Center" Click="GetNFLGameStats_Click" Margin="37,283,1159,447" Background="Black"/>
+        <TextBox x:Name="NFLYear" HorizontalAlignment="Left" Margin="80,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" Width="152" FontSize="15" Text="2013" FontFamily="Global User Interface"/>
+        <TextBox x:Name="NFLWeek" HorizontalAlignment="Left" Margin="80,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="152" FontSize="15" Text="8" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="NFLType" HorizontalAlignment="Left" Margin="80,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="152" FontSize="15" Text="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="23,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="15" Foreground="Black" Height="23">
+    		<Run Text="Year"/>
+    		<LineBreak/>
+    		<Run/>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="21,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="15" Foreground="Black">
+    		<Run Text="Type"/>
+    		<LineBreak/>
+    		<Run/>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="20,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="15" Foreground="Black">
+    		<Run Text="Week"/>
+    		<LineBreak/>
+    		<Run/>
+        </TextBlock>
+        <Image Source="Assets/LeagueLogo/NFL.png" HorizontalAlignment="Left" Height="100" Margin="80,20,0,0" VerticalAlignment="Top" Width="100"/>
+
+    </Canvas>
+</Page>
