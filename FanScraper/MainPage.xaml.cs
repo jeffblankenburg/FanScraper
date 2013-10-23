@@ -31,7 +31,7 @@ namespace FanScraper
 
         private void GetNFLGameList_Click(object sender, RoutedEventArgs e)
         {
-            //GetSource("http://scores.espn.go.com/nfl/scoreboard?seasonYear=" + NFLYear.Text + "&seasonType=" + NFLType.Text + "&weekNumber=" + NFLWeek.Text, 1, 0);
+            GetSource("http://scores.espn.go.com/nfl/scoreboard?seasonYear=" + NFLYear.Text + "&seasonType=" + NFLType.Text + "&weekNumber=" + NFLWeek.Text, 1, 0);
         }
 
         private async void GetNFLGameStats_Click(object sender, RoutedEventArgs e)
@@ -43,6 +43,16 @@ namespace FanScraper
             {
                 GetSource("http://scores.espn.go.com/nfl/boxscore?gameId=" + WeekList[i].ESPNGameNumber, 2, WeekList[i].ESPNGameNumber);
             }
+        }
+
+        private void GetNHLGameList_Click(object sender, RoutedEventArgs e)
+        {
+            string month = NHLMonth.Text;
+            if (month.Length == 1) month = "0" + month;
+            string day = NHLDay.Text;
+            if (day.Length == 1) day = "0" + day;
+            int date = Int32.Parse(NHLYear.Text + month + day);
+            GetSource("http://scores.espn.go.com/nhl/scoreboard?date=" + date, 3, date);
         }
 
         private async void GetSource(string website, int function, int other)
@@ -58,6 +68,9 @@ namespace FanScraper
                 case 2:
                     ParseNFLGameStats(html, other);
                     break;
+                case 3:
+                    ParseNHLGameList(html, other);
+                    break;
                 default:
                     break;
             }
@@ -72,7 +85,7 @@ namespace FanScraper
             List<NFLWeek> WeekList = new List<NFLWeek>();
             initialSplit = html.Split(Separator, System.StringSplitOptions.RemoveEmptyEntries);
 
-            for (int i = 1; i < initialSplit.Length - 1; i++)
+            for (int i = 1; i < initialSplit.Length; i++)
             {
                 var split = initialSplit[i].Split(quoteSeparator, System.StringSplitOptions.RemoveEmptyEntries);
                 await App.MobileService.GetTable<NFLWeek>().InsertAsync(new NFLWeek(Int32.Parse(NFLWeek.Text), Int32.Parse(split[0]), Int32.Parse(split[2]), Int32.Parse(split[4]), Int32.Parse(split[6])));
@@ -321,9 +334,34 @@ namespace FanScraper
                 splitter = splitter[5].Split(THTRSeparator, System.StringSplitOptions.RemoveEmptyEntries);
                 Game.HomePuntLongest = Int32.Parse(splitter[0]);
 
+                //TOTAL TOUCHDOWNS
+                Game.HomeTouchdowns = Game.HomeRushingTouchdowns + Game.HomeReceivingTouchdowns + Game.HomeDefensiveOrSpecialTeamsTouchdowns;
+                Game.AwayTouchdowns = Game.AwayRushingTouchdowns + Game.AwayReceivingTouchdowns + Game.AwayDefensiveOrSpecialTeamsTouchdowns;
+
                 await App.MobileService.GetTable<NFLGame>().InsertAsync(Game);
             }
 
+        }
+
+        private async void ParseNHLGameList(string html, int datecode)
+        {
+            string[] Separator = new string[] { "var thisGame = new gameObj(\"" };
+            string[] quoteSeparator = new string[] { "\"" };
+            string[] initialSplit;
+            string master = html;
+            List<NHLDay> WeekList = new List<NHLDay>();
+            initialSplit = html.Split(Separator, System.StringSplitOptions.RemoveEmptyEntries);
+
+            for (int i = 1; i < initialSplit.Length; i++)
+            {
+                var split = initialSplit[i].Split(quoteSeparator, System.StringSplitOptions.RemoveEmptyEntries);
+                await App.MobileService.GetTable<NHLDay>().InsertAsync(new NHLDay(datecode, Int32.Parse(split[0]), Int32.Parse(split[2]), Int32.Parse(split[4])));
+            }
+        }
+
+        private void GetNHLGameStats_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
 
     }

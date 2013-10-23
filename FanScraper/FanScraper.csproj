@@ -110,6 +110,7 @@
     </Compile>
     <Compile Include="NFLGame.cs" />
     <Compile Include="NFLWeek.cs" />
+    <Compile Include="NHLDay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

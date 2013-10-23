@@ -9,28 +9,38 @@
 
     <Canvas Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="355" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="230"/>
-
-        <Button Content="Get NFL Game List" FontSize="15" HorizontalAlignment="Center" Click="GetNFLGameList_Click" Margin="37,243,1159,488" Background="Black" Height="37" Width="170"/>
-        <Button Content="Get NFL Game Stats" FontSize="15" HorizontalAlignment="Center" Click="GetNFLGameStats_Click" Margin="37,283,1159,447" Background="Black"/>
+        <Button Content="Get NFL Game List" FontSize="15" HorizontalAlignment="Center" Click="GetNFLGameList_Click" Background="Black" Height="37" Width="170" Canvas.Left="37" Canvas.Top="247"/>
+        <Button Content="Get NFL Game Stats" FontSize="15" HorizontalAlignment="Center" Click="GetNFLGameStats_Click" Background="Black" Canvas.Left="37" Canvas.Top="283"/>
         <TextBox x:Name="NFLYear" HorizontalAlignment="Left" Margin="80,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" Width="152" FontSize="15" Text="2013" FontFamily="Global User Interface"/>
-        <TextBox x:Name="NFLWeek" HorizontalAlignment="Left" Margin="80,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="152" FontSize="15" Text="8" RenderTransformOrigin="0.5,0.5"/>
         <TextBox x:Name="NFLType" HorizontalAlignment="Left" Margin="80,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="152" FontSize="15" Text="2"/>
-        <TextBlock HorizontalAlignment="Left" Margin="23,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="15" Foreground="Black" Height="23">
-    		<Run Text="Year"/>
-    		<LineBreak/>
-    		<Run/>
-        </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="21,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="15" Foreground="Black">
-    		<Run Text="Type"/>
-    		<LineBreak/>
-    		<Run/>
-        </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="20,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="15" Foreground="Black">
-    		<Run Text="Week"/>
-    		<LineBreak/>
-    		<Run/>
-        </TextBlock>
+        <TextBox x:Name="NFLWeek" HorizontalAlignment="Left" Margin="80,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="152" FontSize="15" Text="8" RenderTransformOrigin="0.5,0.5"/>
+        <TextBlock HorizontalAlignment="Left" Margin="23,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="15" Foreground="Black" Height="23" Text="Year" />
+        <TextBlock HorizontalAlignment="Left" Margin="21,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="15" Foreground="Black" Text="Type" />
+        <TextBlock HorizontalAlignment="Left" Margin="20,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="15" Foreground="Black" Text="Week" />
         <Image Source="Assets/LeagueLogo/NFL.png" HorizontalAlignment="Left" Height="100" Margin="80,20,0,0" VerticalAlignment="Top" Width="100"/>
+        
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="355" Stroke="Black" VerticalAlignment="Top" Width="230" Canvas.Left="255" Canvas.Top="10"/>
+        <Button Content="Get NHL Game List" FontSize="15" HorizontalAlignment="Center" Background="Black" Height="37" Width="170" Canvas.Left="287" Canvas.Top="247" Click="GetNHLGameList_Click"/>
+        <Button Content="Get NHL Game Stats" FontSize="15" HorizontalAlignment="Center" Background="Black" Canvas.Left="287" Canvas.Top="283" Click="GetNHLGameStats_Click"/>
+        <TextBox x:Name="NHLYear" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" Width="152" FontSize="15" Text="2013" FontFamily="Global User Interface" Canvas.Left="325" Canvas.Top="138"/>
+        <TextBox x:Name="NHLMonth" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="152" FontSize="15" Text="10" Canvas.Left="325" Canvas.Top="170"/>
+        <TextBox x:Name="NHLDay" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="152" FontSize="15" Text="1" RenderTransformOrigin="0.5,0.5" Canvas.Left="325" Canvas.Top="202"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="15" Foreground="Black" Height="23" Canvas.Left="268" Canvas.Top="146">
+        	<Run Text="Year"/>
+        	<LineBreak/>
+        	<Run/>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="15" Foreground="Black" Canvas.Left="266" Canvas.Top="177">
+        	<Run Text="Month"/>
+        	<LineBreak/>
+        	<Run/>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="15" Foreground="Black" Canvas.Left="265" Canvas.Top="210">
+        	<Run Text="Day"/>
+        	<LineBreak/>
+        	<Run/>
+        </TextBlock>
+        <Image Source="Assets/LeagueLogo/NHL.png" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Canvas.Left="325" Canvas.Top="20"/>
 
     </Canvas>
 </Page>
