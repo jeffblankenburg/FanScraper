@@ -108,9 +108,12 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NBADay.cs" />
+    <Compile Include="NBAGame.cs" />
     <Compile Include="NFLGame.cs" />
     <Compile Include="NFLWeek.cs" />
     <Compile Include="NHLDay.cs" />
+    <Compile Include="NHLGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

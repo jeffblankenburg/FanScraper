@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FanScraper
 {
-    public class NHLDay
+    public class NBADay
     {
         public int Id { get; set; }
         public int DateCode { get; set; }
@@ -14,7 +14,7 @@ namespace FanScraper
         public int ESPNHomeTeamID { get; set; }
         public int ESPNAwayTeamID { get; set; }
 
-        public NHLDay(int datecode, int game, int home, int away)
+        public NBADay(int datecode, int game, int home, int away)
         {
             DateCode = datecode;
             ESPNGameNumber = game;
