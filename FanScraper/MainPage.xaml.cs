@@ -313,8 +313,11 @@ namespace FanScraper
 
                 //ATTENDANCE
                 temp = html.Split(AttendanceSeperator, System.StringSplitOptions.RemoveEmptyEntries);
-                temp = temp[1].ToString().Split(DIVDIVSeperator, System.StringSplitOptions.RemoveEmptyEntries);
-                Game.Attendance = Int32.Parse(temp[0].Replace(",", ""));
+                if (temp.Length > 1)
+                {
+                    temp = temp[1].ToString().Split(DIVDIVSeperator, System.StringSplitOptions.RemoveEmptyEntries);
+                    Game.Attendance = Int32.Parse(temp[0].Replace(",", ""));
+                }
 
                 //TIME OF POSSESSION
                 temp = html.Split(TeamAbbrSeperator, System.StringSplitOptions.RemoveEmptyEntries);
@@ -504,10 +507,15 @@ namespace FanScraper
                 splitter = temp[12].Split(TDTRSeperator, System.StringSplitOptions.RemoveEmptyEntries);
                 Game.HomePoints = Int32.Parse(splitter[0]);
 
+                //ATTENDANCE
                 temp = html.Split(AttendanceSeperator, System.StringSplitOptions.RemoveEmptyEntries);
-                splitter = temp[1].ToString().Replace(",", "").Split(BRSeperator, System.StringSplitOptions.RemoveEmptyEntries);
-                Game.Attendance = Int32.Parse(splitter[0]);
+                if (temp.Length > 1)
+                {
+                    splitter = temp[1].ToString().Replace(",", "").Split(BRSeperator, System.StringSplitOptions.RemoveEmptyEntries);
+                    if (splitter[0].Length < 6) Game.Attendance = Int32.Parse(splitter[0]);
+                }
 
+                //GAME LENGTH
                 temp = html.Split(TimeOfGameSeperator, System.StringSplitOptions.RemoveEmptyEntries);
                 if (temp.Length > 1)
                 {
@@ -515,10 +523,12 @@ namespace FanScraper
                     if (splitter[0].Length < 6) Game.GameLength = splitter[0];
                 }
 
+                //AWAY TEAM ABBREVIATION
                 temp = html.Split(AwayTeamSeperator, System.StringSplitOptions.RemoveEmptyEntries);
                 splitter = temp[1].ToString().Split(SlashSeperator, System.StringSplitOptions.RemoveEmptyEntries);
                 Game.AwayTeamAbbr = splitter[0].ToUpper();
 
+                //HOME TEAM ABBREVIATION
                 temp = html.Split(HomeTeamSeperator, System.StringSplitOptions.RemoveEmptyEntries);
                 splitter = temp[1].ToString().Split(SlashSeperator, System.StringSplitOptions.RemoveEmptyEntries);
                 Game.HomeTeamAbbr = splitter[0].ToUpper();
